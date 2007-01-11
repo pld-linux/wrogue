@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=wrogue
+Comment=A gothic fantasy roguelike game
+Comment[pl]=Gotycka gra fantasy typu rogue
+Icon=wrogue.xpm
+Exec=wrogue
+Terminal=false
+Type=Application
+Categories=Game;RolePlaying;
+# vi: encoding=utf-8
