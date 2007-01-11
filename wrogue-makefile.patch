@@ -1,0 +1,11 @@
+--- wrogue-0.7.2b/src/unixgcc.mak~	2006-12-26 02:02:12.000000000 +0100
++++ wrogue-0.7.2b/src/unixgcc.mak	2007-01-11 21:03:10.000000000 +0100
+@@ -94,7 +94,7 @@
+ EXE=./wrogue
+ 
+ CC=gcc
+-CFLAGS=-std=c99 -O2 -fomit-frame-pointer -I. -I./lib -I./ui `sdl-config --cflags`
++CFLAGS=-std=c99 -O2 -fomit-frame-pointer -I. -I./lib -I./ui `sdl-config --cflags` $(OPTFLAGS)
+ LDFLAGS=-lm `sdl-config --libs`
+ RM=rm -f
+ 
