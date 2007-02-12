@@ -1,5 +1,5 @@
 Summary:	A gothic fantasy roguelike game
-Summary(pl):	Gotycka gra fantasy typu rogue
+Summary(pl.UTF-8):   Gotycka gra fantasy typu rogue
 Name:		wrogue
 Version:	0.7.2b
 Release:	1
@@ -19,9 +19,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Warp Rogue is a gothic fantasy roguelike game. It features RPG-like
 game mechanics, recruitable NPCs, and a consistent theme.
 
-%description -l pl
-Warp Rogue jest gotyck± gr± typu rogue. Gra zapewnia mechanikê
-w³a¶ciw± dla gier RPG oraz konsekwentny motyw.
+%description -l pl.UTF-8
+Warp Rogue jest gotyckÄ… grÄ… typu rogue. Gra zapewnia mechanikÄ™
+wÅ‚aÅ›ciwÄ… dla gier RPG oraz konsekwentny motyw.
 
 %prep
 %setup -q
