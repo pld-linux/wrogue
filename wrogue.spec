@@ -1,5 +1,5 @@
 Summary:	A gothic fantasy roguelike game
-Summary(pl.UTF-8):   Gotycka gra fantasy typu rogue
+Summary(pl.UTF-8):	Gotycka gra fantasy typu rogue
 Name:		wrogue
 Version:	0.7.2b
 Release:	1
