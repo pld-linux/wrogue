@@ -6,10 +6,10 @@ Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/todoom/%{name}-%{version}.tar.bz2
+# Source0-md5:	c406145c0bae4837fc111ee629db799d
 Source1:	%{name}.desktop
 Source2:	%{name}.xpm
 Patch0:		%{name}-makefile.patch
-# Source0-md5:	c406145c0bae4837fc111ee629db799d
 URL:		http://todoom.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.9
 BuildRequires:	sed >= 4.0
