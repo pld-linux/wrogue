@@ -41,8 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_desktopdir},%{_bindir},%{_pixmapsdir}}
 
 cp -r data/ $RPM_BUILD_ROOT%{_datadir}/%{name}
-install %{SOURCE1}  $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2}  $RPM_BUILD_ROOT%{_pixmapsdir}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{name} $RPM_BUILD_ROOT%{_bindir}
 
 %clean
