@@ -1,11 +1,11 @@
---- wrogue-0.7.2b/src/unixgcc.mak~	2006-12-26 02:02:12.000000000 +0100
-+++ wrogue-0.7.2b/src/unixgcc.mak	2007-01-11 21:03:10.000000000 +0100
-@@ -94,7 +94,7 @@
- EXE=./wrogue
+--- wrogue-0.7.7b/src/unix.mak~	2007-06-04 11:34:36.000000000 +0200
++++ wrogue-0.7.7b/src/unix.mak	2007-11-01 18:31:20.000000000 +0100
+@@ -192,7 +192,7 @@
  
- CC=gcc
--CFLAGS=-std=c99 -O2 -fomit-frame-pointer -I. -I./lib -I./ui `sdl-config --cflags`
-+CFLAGS=-std=c99 -O2 -fomit-frame-pointer -I. -I./lib -I./ui `sdl-config --cflags` $(OPTFLAGS)
- LDFLAGS=-lm `sdl-config --libs`
- RM=rm -f
+ %.o: %.c
+ 	@echo Building $<
+-	@$(CC) $(CFLAGS) -o $@ -c $<
++	@$(CC) $(CFLAGS) $(OPTFLAGS) -o $@ -c $<
  
+ $(EXE): $(OBJ)
+ 	@$(CC) $(OBJ) $(LDFLAGS) -o $@
