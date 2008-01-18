@@ -1,12 +1,12 @@
 Summary:	A gothic fantasy roguelike game
 Summary(pl.UTF-8):	Gotycka gra fantasy typu rogue
 Name:		wrogue
-Version:	0.7.7b
+Version:	0.8.0
 Release:	1
-License:	GPL v2+
+License:	GPL v3+
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/todoom/%{name}-%{version}.tar.bz2
-# Source0-md5:	928d1e7bcf4531f15b7473d9e29d0544
+# Source0-md5:	c03ac3b590ec668a84965007d08126a9
 Source1:	%{name}.desktop
 Source2:	%{name}.xpm
 Patch0:		%{name}-makefile.patch
@@ -26,15 +26,14 @@ właściwą dla gier RPG oraz konsekwentny motyw.
 %prep
 %setup -q
 %patch0 -p1
-%{__sed} -i 's@./data@%{_datadir}/%{name}/data@' src/platform/unix/pl_unix.c
+%{__sed} -i 's@./data@%{_datadir}/%{name}/data@' src/platform/unix/platform_unix.c
 
 %build
 cd src/
 %{__make} -f unix.mak \
 	CC="%{__cc}" \
-	OPTFLAGS="%{rpmcflags}" \
-	LDFLAGS="%{rpmldflags} `sdl-config --libs`" \
-	MAKECMDGOALS="release"
+	CFLAGS="%{rpmcflags} -I. -I./lib `sdl-config --cflags`" \
+	LDFLAGS="%{rpmldflags} `sdl-config --libs`"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -50,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc changes.txt
+%doc changes.txt scenario_guide.txt
 %attr(755,root,root) %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_desktopdir}/%{name}.desktop
