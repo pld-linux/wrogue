@@ -1,18 +1,18 @@
 Summary:	A gothic fantasy roguelike game
 Summary(pl.UTF-8):	Gotycka gra fantasy typu rogue
 Name:		wrogue
-Version:	0.8.0
+Version:	0.8.0b
 Release:	1
 License:	GPL v3+
 Group:		Applications/Games
-Source0:	http://dl.sourceforge.net/todoom/%{name}-%{version}.tar.bz2
-# Source0-md5:	c03ac3b590ec668a84965007d08126a9
+Source0:	http://dl.sourceforge.net/todoom/%{name}-%{version}.zip
+# Source0-md5:	977ccda1ac18ca3ee545fab95db56b2e
 Source1:	%{name}.desktop
 Source2:	%{name}.xpm
-Patch0:		%{name}-makefile.patch
 URL:		http://todoom.sourceforge.net/
 BuildRequires:	SDL-devel >= 1.2.9
 BuildRequires:	sed >= 4.0
+BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,14 +25,16 @@ właściwą dla gier RPG oraz konsekwentny motyw.
 
 %prep
 %setup -q
-%patch0 -p1
-%{__sed} -i 's@./data@%{_datadir}/%{name}/data@' src/platform/unix/platform_unix.c
+%{__sed} -i 's@data/@%{_datadir}/%{name}/data/@' `grep -r -l 'data/' .`
+
+# prevent from adding useless paths' prefixes
+%{__sed} -ie '561d' src/lib/appdir.c
 
 %build
 cd src/
-%{__make} -f unix.mak \
+%{__make} -f linux.mak \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -I. -I./lib `sdl-config --cflags`" \
+	CFLAGS="%{rpmcflags} -I./include -I./lib `sdl-config --cflags`" \
 	LDFLAGS="%{rpmldflags} `sdl-config --libs`"
 
 %install
@@ -49,7 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc changes.txt scenario_guide.txt
+%doc changes.txt
 %attr(755,root,root) %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_desktopdir}/%{name}.desktop
